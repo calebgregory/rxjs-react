@@ -7,11 +7,11 @@ import Agent from './Agent';
 class Button extends Component {
   componentDidMount() {
     this.click$ = Observable.fromEvent(this.button, 'click');
-    Agent.addStream(this.click$);
+    this.agentRegistryID = Agent.addStream(this.click$);
   }
 
   componentWillUnmount() {
-    Agent.removeStream(this.click$);
+    Agent.removeStream(this.agentRegistryID);
   }
 
   render() {
